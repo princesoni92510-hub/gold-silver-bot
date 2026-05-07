@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bhaav Poster - Super Premium Royal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:wght@400;600;700&family=Marcellus&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  /* ══════════════════════════════════════════
+     POSTER — exact A4 at 150dpi
+     Aesthetic: Ultra-Premium Royal Burgundy & Clean Gold
+  ══════════════════════════════════════════ */
+  #poster {
+    width: 1240px;
+    height: 1754px;
+    position: relative;
+    overflow: hidden;
+
+    /* Deep Royal Burgundy to Onyx Gradient */
+    background: 
+      radial-gradient(circle at 50% 30%, #4a0916 0%, #210308 50%, #0d0103 100%);
+
+    font-family: 'Marcellus', serif;
+    color: #f3dca3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ─── BACKGROUND MANDALA GLOW ─── */
+  .bg-mandala {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+    height: 1400px;
+    background: repeating-conic-gradient(from 0deg, transparent 0deg 15deg, rgba(212, 175, 55, 0.025) 15deg 30deg);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── ORNATE DOUBLE BORDER ─── */
+  .frame-outer {
+    position: absolute;
+    inset: 35px;
+    border: 2px solid #d4af37;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.9);
+  }
+  .frame-inner {
+    position: absolute;
+    inset: 50px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ─── CLEAN CORNER FLOURISHES ─── */
+  .corner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+  }
+  .corner svg { width: 100%; height: 100%; fill: none; stroke: #d4af37; stroke-width: 1.5; }
+  .corner-tl { top: 35px;  left: 35px;  }
+  .corner-tr { top: 35px;  right: 35px; transform: scaleX(-1); }
+  .corner-bl { bottom: 35px; left: 35px;  transform: scaleY(-1); }
+  .corner-br { bottom: 35px; right: 35px; transform: scale(-1,-1); }
+
+  /* ─── TOP SECTION ─── */
+  .top-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 65px 100px 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* NEW MANTRA */
+  .shri-bhawani {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #e6c27a;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+  }
+
+  .brand-label {
+    font-size: 16px;
+    letter-spacing: 12px;
+    color: #c59f44;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.9;
+  }
+
+  /* REPLACED CURLY FONT WITH CLEAN CINZEL */
+  .shop-name {
+    font-family: 'Cinzel', serif;
+    font-size: 110px;
+    font-weight: 800;
+    color: #fdf2d0;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 6px;
+    text-shadow: 0 5px 25px rgba(0,0,0,0.9), 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .tagline {
+    font-size: 20px;
+    color: #d4af37;
+    letter-spacing: 8px;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+
+  /* ─── NEW DYNAMIC DATE SECTION ─── */
+  .date-container {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 60%;
+  }
+
+  .date-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  }
+
+  .live-date {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #e6c27a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* ─── BHAAV HEADING ─── */
+  .bhaav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    margin-top: 45px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .aaj-ka {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 28px;
+    color: #c59f44;
+    letter-spacing: 6px;
+  }
+
+  .bhaav-title {
+    font-family: 'Cinzel', serif;
+    font-size: 85px;
+    font-weight: 700;
+    color: #fdf2d0;
+    letter-spacing: 25px;
+    line-height: 1;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    margin-right: -25px; /* Centers text despite heavy letter-spacing */
+  }
+
+  /* ─── SLEEK, NON-CURLY PRICE PLAQUES ─── */
+  .prices-wrapper {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .price-row {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(212,175,55,0.03) 0%, rgba(212,175,55,0.12) 50%, rgba(212,175,55,0.03) 100%);
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 35px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+  }
+
+  .metal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 3px solid #d4af37;
+    padding-left: 25px;
+  }
+
+  .metal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #fdf2d0;
+    letter-spacing: 6px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .metal-purity {
+    font-size: 20px;
+    color: #c59f44;
+    letter-spacing: 4px;
+  }
+
+  .price-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .per-label {
+    font-size: 18px;
+    color: #c59f44;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 95px; /* Massive, clean placeholders */
+    font-weight: 700;
+    color: #e6c27a; 
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.9);
+  }
+
+  .price-amount .rupee {
+    font-family: 'Marcellus', serif; 
+    font-size: 65px;
+    font-weight: 400;
+    margin-right: 8px;
+    color: #d4af37;
+  }
+
+  /* ─── BOTTOM SECTION ─── */
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .bottom-divider {
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+    margin-bottom: 10px;
+  }
+
+  .bottom-text {
+    font-size: 20px;
+    color: #d4af37;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    left: 0; right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .footer-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #b58f3b;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .footer-disclaimer {
+    font-size: 14px;
+    color: #8a6a24;
+    letter-spacing: 2px;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="poster">
+  
+  <div class="bg-mandala"></div>
+
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
+
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 100 100">
+      <path d="M 0 50 L 50 50 L 50 0" />
+      <path d="M 15 15 L 15 65 L 65 65" stroke-width="0.75" />
+      <rect x="12" y="12" width="6" height="6" fill="#d4af37" stroke="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 100 100">
+      <path d="M 0 50 L 50 50 L 50 0" />
+      <path d="M 15 15 L 15 65 L 65 65" stroke-width="0.75" />
+      <rect x="12" y="12" width="6" height="6" fill="#d4af37" stroke="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 100 100">
+      <path d="M 0 50 L 50 50 L 50 0" />
+      <path d="M 15 15 L 15 65 L 65 65" stroke-width="0.75" />
+      <rect x="12" y="12" width="6" height="6" fill="#d4af37" stroke="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 100 100">
+      <path d="M 0 50 L 50 50 L 50 0" />
+      <path d="M 15 15 L 15 65 L 65 65" stroke-width="0.75" />
+      <rect x="12" y="12" width="6" height="6" fill="#d4af37" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="top-section">
+    <div class="shri-bhawani">॥ जय जीण भवानी ॥</div>
+    
+    <div class="brand-label">Est. Since 1985</div>
+    <div class="shop-name">SHYAM JEWELS</div>
+    <div class="tagline">Trusted &middot; Pure &middot; Certified</div>
+  </div>
+
+  <div class="date-container">
+    <div class="date-line"></div>
+    <div class="live-date" id="dynamic-date">LOADING DATE...</div>
+    <div class="date-line"></div>
+  </div>
+
+  <div class="bhaav-section">
+    <div class="aaj-ka">आज का</div>
+    <div class="bhaav-title">BHAAV</div>
+  </div>
+
+  <div class="prices-wrapper">
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">GOLD</div>
+        <div class="metal-purity">24 KARAT &middot; 999 PURE</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per Gram</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_24}}</div>
+      </div>
+    </div>
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">GOLD</div>
+        <div class="metal-purity">22 KARAT &middot; 916 HALLMARK</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per Gram</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_22}}</div>
+      </div>
+    </div>
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">SILVER</div>
+        <div class="metal-purity">999 FINE SILVER</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per KG</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{silver}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-section">
+    <div class="bottom-divider"></div>
+    <div class="bottom-text">Prices valid for today only &middot; GST applicable</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">BIS Hallmarked &middot; Government Certified Rates</div>
+    <div class="footer-disclaimer">Rates subject to market fluctuation without prior notice</div>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const dateElement = document.getElementById("dynamic-date");
+    const today = new Date();
+    
+    const options = { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long', 
+      year: 'numeric' 
+    };
+    
+    // Formatting as "THURSDAY, 24 OCTOBER 2024"
+    const formattedDate = today.toLocaleDateString('en-IN', options);
+    
+    dateElement.textContent = formattedDate.toUpperCase();
+  });
+</script>
+
+</body>
+</html>

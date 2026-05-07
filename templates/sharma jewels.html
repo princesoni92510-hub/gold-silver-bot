@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bhaav Poster - Sharma Jewels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  /* ══════════════════════════════════════════
+     POSTER — exact A4 at 150dpi
+  ══════════════════════════════════════════ */
+  #poster {
+    width: 1240px;
+    height: 1754px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 0%,   #fffaf0 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 10% 100%, #f7ecd2 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, #f7ecd2 0%, transparent 60%),
+      linear-gradient(175deg, #fbf5e6 0%, #eee1c4 40%, #e6d09e 100%);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ─── OUTER BORDER FRAME ─── */
+  .frame-outer {
+    position: absolute;
+    inset: 24px;
+    border: 1.5px solid #c9a84c;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .frame-inner {
+    position: absolute;
+    inset: 32px;
+    border: 0.75px solid #c9a84c66;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* ─── CORNER ORNAMENTS ─── */
+  .corner {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    z-index: 6;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 18px;  left: 18px;  }
+  .corner-tr { top: 18px;  right: 18px; transform: scaleX(-1); }
+  .corner-bl { bottom: 18px; left: 18px;  transform: scaleY(-1); }
+  .corner-br { bottom: 18px; right: 18px; transform: scale(-1,-1); }
+
+  /* ─── TOP SECTION ─── */
+  .top-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 100px 0; 
+    position: relative;
+    z-index: 10;
+  }
+
+  /* NEW: MANTRA */
+  .shri-shyam {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #9a7030;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 2px rgba(201, 168, 76, 0.2);
+  }
+
+  .brand-label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px; 
+    font-weight: 600;
+    letter-spacing: 10px;
+    color: #b8882a;
+    text-transform: uppercase;
+    margin-bottom: 12px; 
+  }
+
+  .shop-name {
+    font-family: 'Cinzel', serif;
+    font-size: 96px; 
+    font-weight: 900;
+    color: #5c3d0a;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+  }
+
+  .shop-name::after {
+    content: '';
+    display: block;
+    width: 160px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    margin: 14px auto 0; 
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; 
+    font-weight: 400;
+    font-style: italic;
+    color: #9a7030;
+    letter-spacing: 3px;
+    margin-top: 12px; 
+  }
+
+  /* NEW: DYNAMIC DATE CONTAINER */
+  .date-container {
+    margin-top: 25px;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #7a5c12;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(245, 234, 200, 0.4) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    padding: 10px 30px;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  }
+
+  /* ─── ORNAMENTAL DIVIDER ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    width: 85%; 
+    gap: 20px;
+    margin: 30px auto 0; 
+    position: relative;
+    z-index: 10;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a84c88, #c9a84c, #c9a84c88, transparent);
+  }
+  .divider-diamond {
+    width: 10px;
+    height: 10px;
+    background: #c9a84c;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .divider-dot {
+    width: 5px;
+    height: 5px;
+    background: #c9a84c99;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── BHAAV HEADING ─── */
+  .bhaav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; 
+    margin-top: 30px; 
+    position: relative;
+    z-index: 10;
+  }
+
+  .aaj-ka {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; 
+    font-style: italic;
+    color: #9a7030;
+    letter-spacing: 5px;
+  }
+
+  .bhaav-title {
+    font-family: 'Cinzel', serif;
+    font-size: 68px; 
+    font-weight: 700;
+    color: #5c3d0a;
+    letter-spacing: 18px;
+    line-height: 1;
+  }
+
+  /* ─── PRICE CARDS (PREMIUM UPGRADE) ─── */
+  .prices-wrapper {
+    width: 88%; 
+    display: flex;
+    flex-direction: column;
+    gap: 22px; 
+    margin-top: 35px; 
+    position: relative;
+    z-index: 10;
+  }
+
+  .price-card {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,241,220,0.9) 100%);
+    border: 1px solid #dcb968;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(92, 61, 10, 0.05); /* Added subtle shadow for premium feel */
+  }
+
+  .price-card::before {
+    content: '';
+    width: 8px; 
+    background: linear-gradient(180deg, #d4a832, #9a6f10);
+    flex-shrink: 0;
+  }
+
+  .price-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  }
+
+  .card-inner {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 50px 35px 45px; 
+  }
+
+  .metal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .metal-name {
+    font-family: 'Cinzel', serif;
+    font-size: 44px; 
+    font-weight: 700;
+    color: #5c3d0a;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .metal-purity {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; 
+    font-weight: 600;
+    font-style: italic;
+    color: #9a7030;
+    letter-spacing: 2px;
+  }
+
+  .price-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .per-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; 
+    font-weight: 600;
+    font-style: italic;
+    color: #9a7030;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+  }
+
+  .price-amount {
+    font-family: 'Cinzel', serif;
+    font-size: 66px; 
+    font-weight: 700;
+    color: #7a5c12;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .price-amount .rupee {
+    font-size: 50px; 
+    font-weight: 400;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: #9a7030;
+  }
+
+  /* ─── MIDDLE DIVIDER ─── */
+  .mid-divider {
+    width: 85%; 
+    margin: 35px auto 0; 
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ─── BOTTOM ORNAMENT ─── */
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; 
+    margin-top: 35px; 
+    position: relative;
+    z-index: 10;
+  }
+
+  .lotus-ornament svg {
+    width: 90px; 
+    height: 54px;
+    opacity: 0.8;
+  }
+
+  .bottom-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; 
+    font-style: italic;
+    font-weight: 600;
+    color: #9a7030;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    position: absolute;
+    bottom: 40px; 
+    left: 0; right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .footer-line {
+    width: 60%; 
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a84c55, transparent);
+    margin-bottom: 4px;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; 
+    font-weight: 600;
+    color: #a88134;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .footer-disclaimer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; 
+    color: #a8813499;
+    letter-spacing: 1px;
+  }
+
+  /* ─── WATERMARK ─── */
+  .bg-text {
+    position: absolute;
+    bottom: 120px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 240px; 
+    font-weight: 900;
+    color: rgba(201,168,76, 0.04);
+    white-space: nowrap;
+    letter-spacing: 30px;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="poster">
+
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
+
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 52" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L52 8" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L28 28" stroke="#c9a84c" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a84c"/>
+      <circle cx="8" cy="52" r="1.5" fill="#c9a84c66"/>
+      <circle cx="52" cy="8" r="1.5" fill="#c9a84c66"/>
+      <path d="M14 8 Q14 14 8 14" stroke="#c9a84c" stroke-width="0.75" fill="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 52" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L52 8" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L28 28" stroke="#c9a84c" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a84c"/>
+      <circle cx="8" cy="52" r="1.5" fill="#c9a84c66"/>
+      <circle cx="52" cy="8" r="1.5" fill="#c9a84c66"/>
+      <path d="M14 8 Q14 14 8 14" stroke="#c9a84c" stroke-width="0.75" fill="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 52" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L52 8" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L28 28" stroke="#c9a84c" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a84c"/>
+      <circle cx="8" cy="52" r="1.5" fill="#c9a84c66"/>
+      <circle cx="52" cy="8" r="1.5" fill="#c9a84c66"/>
+      <path d="M14 8 Q14 14 8 14" stroke="#c9a84c" stroke-width="0.75" fill="none"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 52" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L52 8" stroke="#c9a84c" stroke-width="1.5"/>
+      <path d="M8 8 L28 28" stroke="#c9a84c" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a84c"/>
+      <circle cx="8" cy="52" r="1.5" fill="#c9a84c66"/>
+      <circle cx="52" cy="8" r="1.5" fill="#c9a84c66"/>
+      <path d="M14 8 Q14 14 8 14" stroke="#c9a84c" stroke-width="0.75" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="bg-text">GOLD</div>
+
+  <div class="top-section">
+    <div class="shri-shyam">॥ श्री श्याम देवाय नमः ॥</div>
+    <div class="brand-label">Est. Since 2010</div>
+    <div class="shop-name">SHARMA JEWELS</div>
+    <div class="tagline">Trusted &middot; Pure &middot; Certified</div>
+    <div class="date-container" id="dynamic-date">LOADING DATE...</div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="bhaav-section">
+    <div class="aaj-ka">aaj ka</div>
+    <div class="bhaav-title">BHAAV</div>
+  </div>
+
+  <div class="prices-wrapper">
+
+    <div class="price-card">
+      <div class="card-inner">
+        <div class="metal-info">
+          <div class="metal-name">GOLD</div>
+          <div class="metal-purity">24 Karat &middot; 999 Pure</div>
+        </div>
+        <div class="price-display">
+          <div class="per-label">per gram</div>
+          <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_24}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="card-inner">
+        <div class="metal-info">
+          <div class="metal-name">GOLD</div>
+          <div class="metal-purity">22 Karat &middot; 916 Hallmark</div>
+        </div>
+        <div class="price-display">
+          <div class="per-label">per gram</div>
+          <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_22}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="card-inner">
+        <div class="metal-info">
+          <div class="metal-name">SILVER</div>
+          <div class="metal-purity">999 Fine Silver</div>
+        </div>
+        <div class="price-display">
+          <div class="per-label">per KG</div>
+          <div class="price-amount"><span class="rupee">&#8377;</span>{{silver}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mid-divider divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="lotus-ornament">
+      <svg viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 44 C40 44 20 32 20 20 C20 12 28 8 40 8 C52 8 60 12 60 20 C60 32 40 44 40 44Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.08)"/>
+        <path d="M40 44 C40 44 4 28 4 16 C4 8 16 6 28 14 C34 18 40 8 40 8" stroke="#c9a84c" stroke-width="0.75" fill="rgba(201,168,76,0.05)"/>
+        <path d="M40 44 C40 44 76 28 76 16 C76 8 64 6 52 14 C46 18 40 8 40 8" stroke="#c9a84c" stroke-width="0.75" fill="rgba(201,168,76,0.05)"/>
+        <circle cx="40" cy="22" r="3" fill="#c9a84c" opacity="0.6"/>
+        <line x1="40" y1="44" x2="40" y2="47" stroke="#c9a84c" stroke-width="1"/>
+        <line x1="32" y1="46" x2="48" y2="46" stroke="#c9a84c" stroke-width="0.75"/>
+      </svg>
+    </div>
+    <div class="bottom-text">Prices valid for today only &middot; GST applicable</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">BIS Hallmarked &middot; Government Certified Rates</div>
+    <div class="footer-disclaimer">Rates subject to market fluctuation without prior notice</div>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const dateElement = document.getElementById("dynamic-date");
+    const today = new Date();
+    const options = { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long', 
+      year: 'numeric' 
+    };
+    const formattedDate = today.toLocaleDateString('en-IN', options);
+    dateElement.textContent = formattedDate.toUpperCase();
+  });
+</script>
+
+</body>
+</html>

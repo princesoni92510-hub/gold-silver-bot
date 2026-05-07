@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bhaav Poster - Midnight Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ══════════════════════════════════════════
+     POSTER — exact A4 at 150dpi
+     Aesthetic: Midnight Onyx & Champagne Gold
+  ══════════════════════════════════════════ */
+  #poster {
+    width: 1240px;
+    height: 1754px;
+    position: relative;
+    overflow: hidden;
+
+    /* Deep Onyx background with a subtle golden spotlight */
+    background: radial-gradient(circle at 50% 40%, #1f1b13 0%, #0a0a0a 60%, #030303 100%);
+    color: #e6d5b8;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ─── MINIMALIST LUXURY BORDERS ─── */
+  .frame-outer {
+    position: absolute;
+    inset: 40px;
+    border: 1px solid #c5a059;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .frame-inner {
+    position: absolute;
+    inset: 55px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ─── TOP SECTION ─── */
+  .top-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 100px 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  .shri-ganesh {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #c5a059;
+    letter-spacing: 5px;
+    margin-bottom: 35px;
+    opacity: 0.8;
+  }
+
+  .brand-label {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 12px;
+    color: #a38c62;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .shop-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 4px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  }
+
+  .tagline {
+    font-size: 18px;
+    font-weight: 300;
+    color: #c5a059;
+    letter-spacing: 8px;
+    margin-top: 25px;
+    text-transform: uppercase;
+  }
+
+  /* ─── DYNAMIC DATE DISPLAY ─── */
+  .date-container {
+    margin-top: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .date-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(197, 160, 89, 0.5);
+  }
+
+  .live-date-box {
+    background: rgba(197, 160, 89, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e6d5b8;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* ─── BHAAV HEADING ─── */
+  .bhaav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .bhaav-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 70px;
+    font-weight: 800;
+    font-style: normal; /* Removed italic */
+    color: #ffffff;
+    letter-spacing: 8px; /* Tightened spacing */
+    line-height: 1;
+    text-transform: uppercase; /* Added uppercase */
+  }
+  
+  /* ─── PRICE ROWS (SLEEK & MASSIVE) ─── */
+  .prices-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Removing gap for a unified table look */
+    margin-top: 50px;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+  }
+
+  .price-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px 20px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    transition: background 0.3s ease;
+  }
+
+  .price-row:hover {
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.05), transparent);
+  }
+
+  .metal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .metal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 6px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .metal-purity {
+    font-size: 18px;
+    font-weight: 300;
+    color: #a38c62;
+    letter-spacing: 4px;
+  }
+
+  .price-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .per-label {
+    font-size: 16px;
+    font-weight: 300;
+    color: #a38c62;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 90px; /* Massive placeholders */
+    font-weight: 600;
+    color: #c5a059; /* Champagne Gold */
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  .price-amount .rupee {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    font-weight: 200;
+    margin-right: 10px;
+    color: #a38c62;
+  }
+
+  /* ─── BOTTOM SECTION ─── */
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 70px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .bottom-text {
+    font-size: 18px;
+    font-weight: 300;
+    color: #c5a059;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    position: absolute;
+    bottom: 55px;
+    left: 0; right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+
+  .footer-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #a38c62;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .footer-disclaimer {
+    font-size: 13px;
+    font-weight: 300;
+    color: #666;
+    letter-spacing: 2px;
+  }
+
+  /* ─── AMBIENT BACKGROUND GLOW EFFECTS ─── */
+  .glow-circle-1 {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .glow-circle-2 {
+    position: absolute;
+    bottom: -200px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="poster">
+  
+  <div class="glow-circle-1"></div>
+  <div class="glow-circle-2"></div>
+
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
+
+  <div class="top-section">
+    <div class="shri-ganesh">॥ श्री गणेशाय नमः ॥</div>
+    <div class="brand-label">Premium Jewellers</div>
+    <div class="shop-name">RAJA JEWELS</div>
+    <div class="tagline">Purity &middot; Excellence &middot; Trust</div>
+  </div>
+
+  <!-- DYNAMIC DATE SECTION -->
+  <div class="date-container">
+    <div class="date-line"></div>
+    <div class="live-date-box" id="dynamic-date">LOADING DATE...</div>
+    <div class="date-line"></div>
+  </div>
+
+  <div class="bhaav-section">
+    <div class="bhaav-title">Rates</div>
+  </div>
+
+  <div class="prices-wrapper">
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">Gold</div>
+        <div class="metal-purity">24 KARAT &middot; 99.9% PURE</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per Gram</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_24}}</div>
+      </div>
+    </div>
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">Gold</div>
+        <div class="metal-purity">22 KARAT &middot; 916 HALLMARK</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per Gram</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{gold_22}}</div>
+      </div>
+    </div>
+
+    <div class="price-row">
+      <div class="metal-info">
+        <div class="metal-name">Silver</div>
+        <div class="metal-purity">999 FINE SILVER</div>
+      </div>
+      <div class="price-display">
+        <div class="per-label">Per KG</div>
+        <div class="price-amount"><span class="rupee">&#8377;</span>{{silver}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-section">
+    <div class="bottom-text">Rates are inclusive of market fluctuations &middot; GST Applicable</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">BIS Hallmarked Certified Jewellery</div>
+    <div class="footer-disclaimer">Rates are subject to change without prior notice based on market conditions.</div>
+  </div>
+
+</div>
+
+<!-- JAVASCRIPT FOR DYNAMIC DATE -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const dateElement = document.getElementById("dynamic-date");
+    
+    // Create a new date object for today
+    const today = new Date();
+    
+    // Formatting options for a premium look (e.g., "THURSDAY, 24 OCTOBER 2024")
+    const options = { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long', 
+      year: 'numeric' 
+    };
+    
+    // Format the date using Indian English locale
+    const formattedDate = today.toLocaleDateString('en-IN', options);
+    
+    // Inject the formatted date in uppercase
+    dateElement.textContent = formattedDate.toUpperCase();
+  });
+</script>
+
+</body>
+</html>
