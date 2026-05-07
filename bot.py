@@ -222,8 +222,8 @@ def main():
     log.info("✅ Daily job scheduled at 8:00 PM IST")
 
     print("\n✅ Bot is running! Press Ctrl+C to stop.\n")
-
-    app.run_polling()
+    print("🚀 Starting Telegram polling...")
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
